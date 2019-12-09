@@ -1,0 +1,6 @@
+- name: ensure that wget is installed
+  apt:
+    update_cache: yes
+    name: wget
+  become: true
+  become_method: 'su'

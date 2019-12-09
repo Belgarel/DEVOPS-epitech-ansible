@@ -19,6 +19,7 @@ if [ "$?" != "0" ] ; then
 else
 	echo "Repository was already found. Not installing."
 fi
+ansible-galaxy install -r requirements.yml
 
 ######################
 # keys creation
@@ -46,6 +47,6 @@ grep "SSH_AUTH_SOCK" "~/.bashrc" 2>/dev/null
 if [ "$?" != "0" ] ; then
 	ssh-agent >> ~/.bashrc
 fi
-ssh-add key/pf/id_rsa
-ssh-add key/pa/id_rsa
-ssh-add key/pb/id_rsa
+ssh-add keys/pf/id_rsa
+ssh-add keys/pa/id_rsa
+ssh-add keys/pb/id_rsa

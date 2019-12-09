@@ -14,3 +14,4 @@ For now, this is very basic: ping the hosts
 ## How to do it
 * Launch the init.sh script to generate and deploy the ssh keys on all machines
 * command: ansible all -i production.yml -m ping
+* git-galaxy install -r requirements.yml

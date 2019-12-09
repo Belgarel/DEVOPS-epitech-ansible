@@ -1,0 +1,26 @@
+- name: Create the ./nvm directory
+  file:
+    path: "{{ ansible_env.HOME }}/.nvm"
+    state: directory
+
+- name: Get nvm script
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh
+    dest: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    force: yes
+    mode: '744'
+
+- name: Install nvm
+  shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh"
+  args:
+    executable: /bin/bash
+
+- name: Install node version
+  shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ front_node_version }}"
+  args:
+    executable: /bin/bash
+
+- name: Use node version
+  shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use {{ front_node_version }}"
+  args:
+    executable: /bin/bash

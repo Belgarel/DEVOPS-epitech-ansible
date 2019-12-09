@@ -1,0 +1,16 @@
+all:
+  children:
+    production:
+      hosts:
+        pf:
+        pa:
+        pb:
+    front:
+      hosts:
+        pf:
+    app:
+      hosts:
+        pa:
+    back:
+      hosts:
+        pb:
