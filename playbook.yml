@@ -2,3 +2,5 @@
 - hosts: front
   roles:
     - front
+  vars:
+    ansible_become_password: "{{ root_password }}"
