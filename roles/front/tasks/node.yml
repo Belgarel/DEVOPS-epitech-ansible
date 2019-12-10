@@ -24,3 +24,9 @@
   shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use {{ front_node_version }}"
   args:
     executable: /bin/bash
+
+
+- name: role_front > Install angular
+  command: "npm install -g {{ front_node_angular }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.nvm/versions/node/v{{ front_node_version }}/bin"
