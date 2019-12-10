@@ -6,11 +6,16 @@
     group: "{{ front_deploy_user }}"
   become: true
   become_method: su
+  tags:
+  - front
+  - install
 
 - name: role_front > Deploy the front
   unarchive:
     src: "{{ front_deploy_source }}"
     dest: "{{ front_deploy_destination }}"
+  tags:
+  - front
 
 - name: role_front > Run npm install
   command: npm install
@@ -18,8 +23,13 @@
     chdir: "{{ front_deploy_destination }}/front/"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.nvm/versions/node/v{{ front_node_version }}/bin"
+  tags:
+  - front
 
 - name: role_front > Run ng build
   command: ng build --prod
   args:
     chdir: "{{ front_deploy_destination }}/front/"
+  tags:
+  - front
+  - wip

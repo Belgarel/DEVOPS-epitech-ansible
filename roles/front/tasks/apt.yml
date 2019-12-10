@@ -4,3 +4,6 @@
     name: "{{ front_apt_packages }}"
   become: true
   become_method: 'su'
+  tags:
+  - front
+  - install

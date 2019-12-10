@@ -2,6 +2,9 @@
   file:
     path: "{{ ansible_env.HOME }}/.nvm"
     state: directory
+  tags:
+  - front
+  - install
 
 - name: frole_front > Get nvm script
   get_url:
@@ -9,24 +12,36 @@
     dest: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
     force: yes
     mode: '744'
+  tags:
+  - front
+  - install
 
 - name: role_front > Install nvm
   shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh"
   args:
     executable: /bin/bash
+  tags:
+  - front
+  - install
 
 - name: role_front > Install node version
   shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ front_node_version }}"
   args:
     executable: /bin/bash
+  tags:
+  - front
+  - insdtall
 
 - name: role_front > Use node version
   shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use {{ front_node_version }}"
   args:
     executable: /bin/bash
-
+  tags:
+  - front
 
 - name: role_front > Install angular
   command: "npm install -g {{ front_node_angular }}"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.nvm/versions/node/v{{ front_node_version }}/bin"
+  tags:
+  - front
