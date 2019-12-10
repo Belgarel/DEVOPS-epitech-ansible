@@ -1,1 +1,7 @@
+front_apt_packages:
+  - 'wget'
+  - 'unzip'
 front_node_version: 12.13.1
+front_deploy_user: ansible
+front_deploy_source: "{{ role_path }}/files/frontend.zip"
+front_deploy_destination: /FRONT

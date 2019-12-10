@@ -1,6 +1,6 @@
-- name: role_front > ensure that wget is installed
+- name: role_front > ensure that apt prerequesites are installed
   apt:
     update_cache: yes
-    name: wget
+    name: "{{ front_apt_packages }}"
   become: true
   become_method: 'su'

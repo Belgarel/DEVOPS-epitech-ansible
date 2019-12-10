@@ -1,0 +1,18 @@
+- name: role_front > Create the DEST directory
+  file:
+    path: "{{ front_deploy_destination }}"
+    state: directory
+  become: true
+  become_method: su
+
+- name: role_front > Create the DEST directory 2
+  shell: "chown {{ front_deploy_user }} {{ front_deploy_destination }}"
+  become: true
+  become_method: su
+  args:
+    executable: /bin/bash
+
+- name: role_front > Deploy the front
+  unarchive:
+    src: "{{ front_deploy_source }}"
+    dest: "{{ front_deploy_destination }}"
