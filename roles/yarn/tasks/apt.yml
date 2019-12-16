@@ -1,0 +1,28 @@
+- name: role_front > configure the yarn apt key
+  apt_key:
+    url: "{{ yarn_apt_url }}"
+  become: true
+  become_method: 'su'
+  tags:
+    - yarn
+    - install
+
+- name: role_front > add yarn repository
+  apt_repository:
+    repo: 'deb https://dl.yarnpkg.com/debian/ stable main'
+    state: present
+  become: true
+  become_method: 'su'
+  tags:
+    - yarn
+    - install
+
+- name: ensure that yarn is installed
+  apt:
+    name: yarn
+    state: present
+  become: true
+  become_method: 'su'
+  tags:
+    - yarn
+    - install
