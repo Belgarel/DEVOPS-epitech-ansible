@@ -1,7 +1,6 @@
 front_apt_packages:
-  - 'wget'
   - 'unzip'
-front_node_version: 12.13.1
+front_apt_yarn_url: 'https://dl.yarnpkg.com/debian/pubkey.gpg'
 front_node_angular: '@angular/cli'
 front_node_angular_version: '7.1.4'
 front_deploy_user: ansible
