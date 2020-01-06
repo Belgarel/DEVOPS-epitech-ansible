@@ -1,5 +1,3 @@
 dependencies:
   - role: node
-  - role: angular
   - role: yarn
-  - role: deploy

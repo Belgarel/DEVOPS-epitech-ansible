@@ -5,6 +5,7 @@
   tags:
   - setup
   - install
+  - node
 
 - name: role_node > Get nvm script
   get_url:
@@ -15,6 +16,7 @@
   tags:
   - setup
   - install
+  - node
 
 - name: role_node > Install nvm
   shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh"
@@ -23,6 +25,7 @@
   tags:
   - setup
   - install
+  - node
 
 - name: role_node > Install node version
   shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_node_version }}"
@@ -31,6 +34,7 @@
   tags:
   - setup
   - install
+  - node
 
 - name: role_node > Use node version
   shell: "\\. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use {{ node_node_version }}"
@@ -39,3 +43,4 @@
   tags:
   - setup
   - install
+  - node

@@ -1,0 +1,19 @@
+- name: role_deploy > Create the DEST directory
+  file:
+    path: "{{ deploy_deploy_destination }}"
+    state: directory
+    owner: "{{ deploy_deploy_user }}"
+    group: "{{ deploy_deploy_user }}"
+  become: true
+  become_method: su
+  tags:
+  - setup
+  - install
+
+- name: role_deploy > Unzip the archive
+  unarchive:
+    src: "{{ deploy_deploy_source }}"
+    dest: "{{ deploy_deploy_destination }}"
+  tags:
+  - setup
+  - install

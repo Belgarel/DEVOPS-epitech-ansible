@@ -1,0 +1,11 @@
+- name: role_angular > install angular packages
+  npm:
+    global: yes
+    name: "{{ angular_angular_package }}"
+    version: "{{ angular_angular_version }}"
+  become: true
+  become_method: 'su'
+  environment:
+    PATH: "{{ angular_angular_npm_path }}"
+  tags:
+    - install

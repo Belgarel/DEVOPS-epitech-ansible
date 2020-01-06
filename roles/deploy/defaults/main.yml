@@ -1,0 +1,5 @@
+deploy_deploy_user: ansible
+deploy_deploy_source: " ~/archive.zip"
+deploy_deploy_destination: ~/
+deploy_build_dir: ~/
+deploy_build_ng_path: /bin

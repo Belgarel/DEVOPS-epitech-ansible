@@ -1,4 +1,4 @@
-- name: role_front > configure the yarn apt key
+- name: role_yarn > configure the yarn apt key
   apt_key:
     url: "{{ yarn_apt_url }}"
   become: true
@@ -7,7 +7,7 @@
     - yarn
     - install
 
-- name: role_front > add yarn repository
+- name: role_yarn > add yarn repository
   apt_repository:
     repo: 'deb https://dl.yarnpkg.com/debian/ stable main'
     state: present
@@ -17,7 +17,7 @@
     - yarn
     - install
 
-- name: ensure that yarn is installed
+- name: role_yarn > ensure that yarn is installed
   apt:
     name: yarn
     state: present

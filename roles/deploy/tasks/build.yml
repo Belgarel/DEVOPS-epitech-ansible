@@ -1,0 +1,16 @@
+- name: role_deploy > Run yarn install
+  yarn:
+    path: "{{ deploy_build_dir }}"
+  tags:
+  - setup
+  - install
+
+- name: role_deploy > Run ng build
+  command: ng build --prod
+  args:
+    chdir: "{{ deploy_build_dir }}"
+  environment:
+    PATH: "{{ deploy_build_ng_path }}"
+  tags:
+  - setup
+  - install

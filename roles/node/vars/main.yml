@@ -1,3 +1,2 @@
 node_apt_packages:
   - 'wget'
-node_node_version: 12.13.1
