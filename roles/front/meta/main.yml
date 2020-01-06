@@ -3,3 +3,4 @@ dependencies:
   - role: angular
   - role: yarn
   - role: deploy
+  - role: build

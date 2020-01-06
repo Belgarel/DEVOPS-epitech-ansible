@@ -1,0 +1,9 @@
+- name: role_build > Run ng build
+  command: ng build --prod
+  args:
+    chdir: "{{ build_build_dir }}"
+  environment:
+    PATH: "{{ build_build_ng_path }}"
+  tags:
+  - setup
+  - install

@@ -1,8 +1,5 @@
-front_apt_packages:
-  - 'unzip'
-
 front_deploy_user: ansible
-front_deploy_source: "{{ role_path }}/files/frontend.zip"
+front_deploy_source: "roles/front/files/frontend.zip"
 front_deploy_destination: /FRONT
 
 node_node_version: 10.17.0
@@ -14,5 +11,6 @@ deploy_deploy_user: "{{ front_deploy_user }}"
 deploy_deploy_source: "{{ front_deploy_source }}"
 deploy_deploy_destination: "{{ front_deploy_destination }}"
 deploy_build_dir: "{{ front_deploy_destination }}/front"
-deploy_build_ng_pathos: "/home/ansible/.nvm/versions/bin"
-deploy_build_ng_path: "{{ front_node_executable }}"
+
+build_build_dir: "{{ front_deploy_destination }}/front"
+build_build_ng_path: "{{ front_node_executable }}"
