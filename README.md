@@ -18,6 +18,14 @@ The user ansible/***** is expected to exist on these 3 machines. It is also expe
 * command: ansible all -i production.yml -m ping
 * git-galaxy install -r requirements.yml
 
+## Sensible information
+
+* The **roles/hosts/files/ref_hosts** file determines the **/etc/hosts** file of all known hosts. It should be a copy of the local **/etc/hosts** file.
+* Two passwords are encrypted using the ansible vault in the group_vars directory. To modify it, use the ansible-vault encrypt_string --ask-vault-pass command.
+  * The current ansible password is: **NSA**
+  * The database password in production.yml is: **prodword**
+  * The root password is: **dev0ps**
+
 ## Tags
 The following tags have been implemented.
 
@@ -26,5 +34,9 @@ Add --tags "tag1,tag2" to restrict the tagged tags (all tags must be included).
 Add --skip-tags "tag1,tag2" to exclude certain tags (typically, tag `wip`).
 
 * front: for front installation and deployment
+* app: for application installation and deployment
+* bdd: for database installation and deployment
+
+* hosts: for deployment of the hosts file
 * install: for first installation actions specifically
 * wip: for taks that do not work yet

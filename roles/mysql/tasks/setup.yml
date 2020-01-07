@@ -1,0 +1,21 @@
+- name: role_mysql > ensure that the database exists
+  become: true
+  become_method: 'su'
+  mysql_db:
+    name: "{{ mysql_database }}"
+    state: present
+  tags:
+    - install
+    - setup
+
+- name: role_mysql > ensure that the user exists
+  become: true
+  become_method: 'su'
+  mysql_user:
+    name: "{{ mysql_user_login }}"
+    password: "{{ mysql_user_password }}"
+    priv: "{{ mysql_database }}.*:ALL,GRANT"
+    state: present
+  tags:
+    - install
+    - setup

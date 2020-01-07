@@ -1,0 +1,9 @@
+- name: role_mysql > ensure that all mysql packages are installed
+  become: true
+  become_method: 'su'
+  apt:
+    name: "{{ mysql_apt_packages }}"
+    state: present
+  tags:
+    - apt
+    - install

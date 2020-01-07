@@ -5,12 +5,16 @@ all:
         pf:
         pa:
         pb:
-    front:
+      vars:
+        mysql_user_login: prod_bdd
+        mysql_database: prod_db
+        mysql_user_password: prodword
+    prodfront:
       hosts:
         pf:
-    app:
+    prodapp:
       hosts:
         pa:
-    back:
+    prodbdd:
       hosts:
         pb:
