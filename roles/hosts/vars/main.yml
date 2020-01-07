@@ -1,0 +1,1 @@
+hosts_ref_hosts: "{{ role_path }}/files/ref_hosts"

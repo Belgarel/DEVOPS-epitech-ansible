@@ -1,4 +1,5 @@
 ---
+- import_playbook: hosts.yml
 - hosts: front
   roles:
     - front

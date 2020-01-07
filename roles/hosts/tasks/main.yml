@@ -1,0 +1,10 @@
+- name: role_hosts > Copy the hosts file
+  become: true
+  become_method: 'su'
+  copy:
+    src: "{{ hosts_ref_hosts }}"
+    dest: /etc/hosts
+    owner: root
+    mode: 644
+  tags:
+  - setup
