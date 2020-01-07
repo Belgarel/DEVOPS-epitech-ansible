@@ -4,3 +4,10 @@
     - front
   vars:
     ansible_become_password: "{{ root_password }}"
+  tags: front
+- hosts: app
+  roles:
+    - app
+  vars:
+    ansible_become_password: "{{ root_password }}"
+  tags: app
