@@ -45,7 +45,9 @@ ssh-copy-id -i keys/pb/id_rsa ansible@pb
 ######################
 grep "SSH_AUTH_SOCK" "~/.bashrc" 2>/dev/null
 if [ "$?" != "0" ] ; then
-	ssh-agent >> ~/.bashrc
+	ssh_agent=$(ssh-agent)
+	eval "$ssh_agent"
+	echo "$ssh_agent"  >> ~/.bashrc
 fi
 ssh-add keys/pf/id_rsa
 ssh-add keys/pa/id_rsa
