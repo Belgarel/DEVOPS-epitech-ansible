@@ -3,4 +3,10 @@
   args:
     chdir: "{{ build_build_dir }}"
   tags:
-    - install
+    - build
+
+- name: role_app > composer install
+  composer:
+    command: install
+  tags:
+    - build

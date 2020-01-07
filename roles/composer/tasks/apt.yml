@@ -1,0 +1,9 @@
+- name: role_composer > ensure that yarn is installed
+  apt:
+    name: "{{ composer_apt_packages }}"
+    state: present
+  become: true
+  become_method: 'su'
+  tags:
+    - composer
+    - install

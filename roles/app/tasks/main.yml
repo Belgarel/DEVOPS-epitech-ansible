@@ -1,2 +1,2 @@
-- import_tasks: yarn.yml
 - import_tasks: configure.yml
+- import_tasks: build.yml

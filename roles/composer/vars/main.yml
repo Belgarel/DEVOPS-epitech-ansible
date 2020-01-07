@@ -1,0 +1,4 @@
+composer_apt_packages:
+  - 'php'
+  - 'php-xml'
+  - 'composer'
