@@ -1,0 +1,6 @@
+- name: role_app > upgrade yarn
+  shell: yarn upgrade
+  args:
+    chdir: "{{ build_build_dir }}"
+  tags:
+    - install

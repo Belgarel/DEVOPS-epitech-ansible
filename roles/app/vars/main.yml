@@ -13,3 +13,5 @@ deploy_deploy_destination: "{{ app_deploy_destination }}"
 deploy_build_dir: "{{ app_deploy_destination }}/back"
 
 build_build_dir: "{{ app_deploy_destination }}/back"
+
+app_configure_database: "{{ build_build_dir }}/.env.example"

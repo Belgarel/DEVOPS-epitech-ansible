@@ -1,0 +1,5 @@
+app_configure_db_host: localhost
+app_configure_db_port: 3306
+app_configure_db_name: database
+app_configure_db_username: root
+app_configure_db_password: root

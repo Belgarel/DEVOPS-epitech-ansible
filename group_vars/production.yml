@@ -7,3 +7,9 @@ mysql_user_password: !vault |
           6432636439373232300a353234333963396534313132666335303165663365393438663963646639
           6364
 mysql_database: prod_db
+
+app_configure_db_host: pb
+app_configure_db_port: 3306
+app_configure_db_name: "{{ mysql_database }}"
+app_configure_db_username: "{{ mysql_user_login }}"
+app_configure_db_password: "{{ mysql_user_password }}"

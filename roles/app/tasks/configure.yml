@@ -1,0 +1,48 @@
+- name: role_app > configure the database host
+  lineinfile:
+    path: "{{ app_configure_database }}"
+    regexp: '^DB_HOST=.*$'
+    line: "DB_PORT={{ app_configure_db_host }}"
+  tags:
+    - setup
+    - configuration
+
+- name: role_app > configure the database port
+  lineinfile:
+    path: "{{ app_configure_database }}"
+    regexp: '^DB_PORT=.*$'
+    line: "DB_PORT={{ app_configure_db_port }}"
+  tags:
+    - setup
+    - configuration
+
+- name: role_app > configure the database name
+  lineinfile:
+    path: "{{ app_configure_database }}"
+    regexp: '^DB_DATABASE=.*$'
+    line: "DB_PORT={{ app_configure_db_name }}"
+  tags:
+    - setup
+    - configuration
+
+- name: role_app > configure the database user
+  lineinfile:
+    path: "{{ app_configure_database }}"
+    regexp: '^DB_USERNAME=.*$'
+    line: "DB_PORT={{ app_configure_db_username }}"
+  tags:
+    - setup
+    - configuration
+
+- name: role_app > configure the database password
+  lineinfile:
+    path: "{{ app_configure_database }}"
+    regexp: '^DB_PASSWORD=.*$'
+    line: "DB_PORT={{ app_configure_db_password }}"
+  tags:
+    - setup
+    - configuration
+- name: role_app > configure database file to be unreadable
+  file:
+    path: "{{ app_configure_database }}"
+    mode: '600'
