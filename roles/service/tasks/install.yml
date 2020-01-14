@@ -1,0 +1,72 @@
+- name: role_service > create the script directory
+  become: yes
+  become_method: 'su'
+  file:
+    path: "{{ service_install_directory }}"
+    state: directory
+    owner: root
+    group: root
+  tags:
+    - service
+    - install
+
+- name: role_service > deploy the service template
+  become: yes
+  become_method: 'su'
+  copy:
+    src: "{{ service_install_template }}"
+    dest: "{{ service_install_service_file }}"
+    mode: '644'
+    owner: root
+    group: root
+  tags:
+    - service
+    - install
+
+- name: role_service > replace description
+  become: yes
+  become_method: 'su'
+  lineinfile:
+    path: "{{ service_install_service_file }}"
+    regexp: '^Description = %service_description%$'
+    line: "Description = {{ service__description }}"
+  tags:
+    - service
+    - install
+
+- name: role_service > replace the start script
+  become: yes
+  become_method: 'su'
+  lineinfile:
+    path: "{{ service_install_service_file }}"
+    regexp: '^ExecStart = %service_start%$'
+    line: "ExecStart = {{ service_install_start_exec }}"
+  tags:
+    - service
+    - install
+
+- name: role_service > create the symbolic link in the systemd directory
+  become: yes
+  become_method: 'su'
+  file:
+    src: "{{ service_install_service_file }}"
+    dest: "{{ service_install_systemd_link }}"
+    state: link
+    owner: root
+    group: root
+  tags:
+    - service
+    - install
+
+- name: role_service > deploy the start script
+  become: yes
+  become_method: 'su'
+  copy:
+    src: "{{ service_install_start_exec_src }}"
+    dest: "{{ service_install_start_exec }}"
+    mode: '744'
+    owner: root
+    group: root
+  tags:
+    - service
+    - install

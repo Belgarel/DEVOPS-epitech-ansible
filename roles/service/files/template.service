@@ -1,0 +1,5 @@
+[Unit]
+Description = %service_description%
+
+[Service]
+ExecStart = %service_start%

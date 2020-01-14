@@ -1,0 +1,6 @@
+service__user: ansible
+service__name: service
+service__description: default ansible service
+service_install_directory: /SYS/
+service_install_start_exec_src: "{{ role_path }}/files/start.sh"
+service_install_start_exec: /SYS/systemd/

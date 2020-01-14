@@ -1,0 +1,4 @@
+service_install_template: "{{ role_path }}/files/template.service"
+service_install_services_directory: /etc/systemd/system/
+service_install_service_file: "{{ service_install_directory }}{{ service__name }}.service"
+service_install_systemd_link: "{{ service_install_services_directory }}{{ service__name }}.service"

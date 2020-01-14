@@ -1,0 +1,10 @@
+- name: role_service > start systemd service
+  become: yes
+  become_method: 'su'
+  service:
+    name: "{{ service__name }}"
+    state: started
+    enabled: yes
+  tags:
+    - service
+    - service_start

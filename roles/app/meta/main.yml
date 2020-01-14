@@ -4,3 +4,4 @@ dependencies:
   - role: yarn
   - role: composer
   - role: deploy
+  - role: service

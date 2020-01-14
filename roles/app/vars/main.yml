@@ -14,5 +14,13 @@ deploy_build_dir: "{{ app_deploy_destination }}/back"
 
 build_build_dir: "{{ app_deploy_destination }}/back"
 
+service__user: "{{ app_deploy_user }}"
+service__name: "lavarel"
+service__description: "Lavarel back"
+
+service_install_directory: /APP/service/
+service_install_start_exec_src: "roles/app/files/start_service.sh"
+service_install_start_exec: "/APP/service/start_service.sh"
+
 app_configure_env: "{{ build_build_dir }}/.env"
 app_configure_src_env: "{{ app_configure_env }}.example"
