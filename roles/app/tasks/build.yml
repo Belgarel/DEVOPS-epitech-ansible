@@ -8,5 +8,6 @@
 - name: role_app > composer install
   composer:
     command: install
+    working_dir: "{{ build_build_dir }}"
   tags:
     - build

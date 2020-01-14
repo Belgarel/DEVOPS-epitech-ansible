@@ -1,6 +1,16 @@
+- name: role_app > create the .env file using .env.example
+  copy:
+    remote_src: yes
+    src: "{{ app_configure_src_env }}"
+    dest: "{{ app_configure_env }}"
+    mode: '600'
+  tags:
+    - setup
+    - configuration
+
 - name: role_app > configure the database host
   lineinfile:
-    path: "{{ app_configure_database }}"
+    path: "{{ app_configure_env }}"
     regexp: '^DB_HOST=.*$'
     line: "DB_PORT={{ app_configure_db_host }}"
   tags:
@@ -9,7 +19,7 @@
 
 - name: role_app > configure the database port
   lineinfile:
-    path: "{{ app_configure_database }}"
+    path: "{{ app_configure_env }}"
     regexp: '^DB_PORT=.*$'
     line: "DB_PORT={{ app_configure_db_port }}"
   tags:
@@ -18,7 +28,7 @@
 
 - name: role_app > configure the database name
   lineinfile:
-    path: "{{ app_configure_database }}"
+    path: "{{ app_configure_env }}"
     regexp: '^DB_DATABASE=.*$'
     line: "DB_PORT={{ app_configure_db_name }}"
   tags:
@@ -27,7 +37,7 @@
 
 - name: role_app > configure the database user
   lineinfile:
-    path: "{{ app_configure_database }}"
+    path: "{{ app_configure_env }}"
     regexp: '^DB_USERNAME=.*$'
     line: "DB_PORT={{ app_configure_db_username }}"
   tags:
@@ -36,13 +46,9 @@
 
 - name: role_app > configure the database password
   lineinfile:
-    path: "{{ app_configure_database }}"
+    path: "{{ app_configure_env }}"
     regexp: '^DB_PASSWORD=.*$'
     line: "DB_PORT={{ app_configure_db_password }}"
   tags:
     - setup
     - configuration
-- name: role_app > configure database file to be unreadable
-  file:
-    path: "{{ app_configure_database }}"
-    mode: '600'
