@@ -1,12 +1,12 @@
 ---
 - import_playbook: hosts.yml
 
-- hosts: prodfront
+- hosts: prodbdd
   roles:
-    - front
+    - mysql
   vars:
     ansible_become_password: "{{ root_password }}"
-  tags: front
+  tags: bdd
 
 - hosts: prodapp
   roles:
@@ -15,9 +15,9 @@
     ansible_become_password: "{{ root_password }}"
   tags: app
 
-- hosts: prodbdd
+- hosts: prodfront
   roles:
-    - mysql
+    - front
   vars:
     ansible_become_password: "{{ root_password }}"
-  tags: bdd
+  tags: front
