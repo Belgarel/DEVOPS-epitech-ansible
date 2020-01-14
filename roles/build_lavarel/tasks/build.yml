@@ -1,0 +1,13 @@
+- name: role_lavarel > run yarn upgrade
+  shell: yarn upgrade
+  args:
+    chdir: "{{ lavarel_build_dir }}"
+  tags:
+    - build
+
+- name: role_lavarel > composer install
+  composer:
+    command: install
+    working_dir: "{{ lavarel_build_dir }}"
+  tags:
+    - build

@@ -1,0 +1,8 @@
+lavarel_build_dir: ~/
+lavarel_configure_env_src: "{{ role_path }}/.env"
+lavarel_configure_env: ~/
+lavarel_configure_db_host: localhost
+lavarel_configure_db_port: 3306
+lavarel_configure_db_name: mysql
+lavarel_configure_db_username: root
+lavarel_configure_db_password: root

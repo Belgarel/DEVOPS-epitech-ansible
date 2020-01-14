@@ -1,6 +1,8 @@
 app_deploy_user: ansible
 app_deploy_source: "roles/app/files/backend.zip"
-app_deploy_destination: /APP
+app_service_start_script: "roles/app/files/start_service.sh"
+app_deploy_destination: /APP/
+app_build_dir: "{{ app_deploy_destination }}back/"
 
 node_node_version: 10.17.0
 app_node_executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_node_version }}/bin"
@@ -10,17 +12,20 @@ angular_angular_npm_path: "{{ app_node_executable }}"
 deploy_deploy_user: "{{ app_deploy_user }}"
 deploy_deploy_source: "{{ app_deploy_source }}"
 deploy_deploy_destination: "{{ app_deploy_destination }}"
-deploy_build_dir: "{{ app_deploy_destination }}/back"
+deploy_build_dir: "{{ app_build_dir }}"
 
-build_build_dir: "{{ app_deploy_destination }}/back"
+lavarel_build_dir: "{{ app_build_dir }}"
+lavarel_configure_env: "{{ lavarel_build_dir }}.env"
+lavarel_configure_env_src: "{{ lavarel_configure_env }}.example"
+lavarel_configure_db_host: "{{ app_configure_db_host }}"
+lavarel_configure_db_port: "{{ app_configure_db_port }}"
+lavarel_configure_db_name: "{{ app_configure_db_name }}"
+lavarel_configure_db_username: "{{ app_configure_db_username }}"
+lavarel_configure_db_password: "{{ app_configure_db_password }}"
 
 service__user: "{{ app_deploy_user }}"
 service__name: "lavarel"
 service__description: "Lavarel back"
-
 service_install_directory: /APP/service/
-service_install_start_exec_src: "roles/app/files/start_service.sh"
+service_install_start_exec_src: "{{ app_service_start_script }}"
 service_install_start_exec: "/APP/service/start_service.sh"
-
-app_configure_env: "{{ build_build_dir }}/.env"
-app_configure_src_env: "{{ app_configure_env }}.example"

@@ -1,4 +1,4 @@
-- name: role_composer > ensure that yarn is installed
+- name: role_composer > ensure that composer and php are installed
   apt:
     name: "{{ composer_apt_packages }}"
     state: present
