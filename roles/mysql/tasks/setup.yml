@@ -1,3 +1,27 @@
+- name: role_mysql > allow remote connections to the database 1/2
+  become: true
+  become_method: 'su'
+  lineinfile:
+    line: "[mysqld]"
+    path: "{{ mysql_setup_cnf_path }}"
+    state: present
+  tags:
+    - install
+    - setup
+
+- name: role_mysql > allow remote connections to the database 2/2
+  become: true
+  become_method: 'su'
+  lineinfile:
+    regexp: bind-address = *
+    insertafter: "[mysqld]"
+    line: "bind-address = 0.0.0.0"
+    path: "{{ mysql_setup_cnf_path }}"
+    state: present
+  tags:
+    - install
+    - setup
+
 - name: role_mysql > ensure that the database exists
   become: true
   become_method: 'su'
@@ -14,8 +38,19 @@
   mysql_user:
     name: "{{ mysql_user_login }}"
     password: "{{ mysql_user_password }}"
+    host: '%'
     priv: "{{ mysql_database }}.*:ALL,GRANT"
     state: present
+  tags:
+    - install
+    - setup
+
+- name: role_mysql > restart to take changes into account
+  become: true
+  become_method: 'su'
+  service:
+    name: mysqld
+    state: restarted
   tags:
     - install
     - setup

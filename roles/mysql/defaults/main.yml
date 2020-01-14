@@ -1,4 +1,6 @@
+mysql_setup_cnf_path: /etc/mysql/my.cnf
 mysql_root_password: root
 mysql_user_login: ansible
 mysql_user_password: ansible
 mysql_database: ansible
+
