@@ -1,0 +1,17 @@
+- name: role_build > Run yarn upgrade
+  command: yarn upgrade
+  args:
+    chdir: "{{ angular_build_dir }}"
+  tags:
+  - setup
+  - install
+
+- name: role_build > Run ng build
+  command: ng build --prod
+  args:
+    chdir: "{{ angular_build_dir }}"
+  environment:
+    PATH: "{{ angular_build_ng_path }}"
+  tags:
+  - setup
+  - install
