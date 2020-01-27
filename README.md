@@ -15,16 +15,17 @@ The user ansible/***** is expected to exist on these 3 machines. It is also expe
 
 ## How to do it
 * Launch the init.sh script to generate and deploy the ssh keys on all machines
-* command: ansible all -i production.yml -m ping
-* git-galaxy install -r requirements.yml
+* Command: `ansible all -i production.yml -m ping` to ensure that hosts can be joined
+* Check that `/roles/hosts/files/ref_hosts` is adapted to the environment, then launch `ansible-playbook -i inventory.yml hosts.yml`
+* Put the zipped sources in `/roles/front/files/frontend.zip` and `/roles/app/files/backend.zip` before **deployment**
 
 ## Sensible information
 
 * The **roles/hosts/files/ref_hosts** file determines the **/etc/hosts** file of all known hosts. It should be a copy of the local **/etc/hosts** file.
 * Two passwords are encrypted using the ansible vault in the group_vars directory. To modify it, use the ansible-vault encrypt_string --ask-vault-pass command.
+  * The root password is: **dev0ps**
   * The current ansible password is: **NSA**
   * The database password in production.yml is: **prodword**
-  * The root password is: **dev0ps**
 
 ## Tags
 The following tags have been implemented.
@@ -39,4 +40,5 @@ Add --skip-tags "tag1,tag2" to exclude certain tags (typically, tag `wip`).
 
 * hosts: for deployment of the hosts file
 * install: for first installation actions specifically
+* service_start: to automatically start the service upon deployment
 * wip: for taks that do not work yet
