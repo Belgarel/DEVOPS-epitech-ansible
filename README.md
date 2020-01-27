@@ -2,6 +2,9 @@
 Ansible project for T-NSA-700 (school project)
 
 ## Prerequesite
+
+[Install ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian).
+
 The /etc/hosts file is expected to fill information for the following hosts:
 * pf (prod front)
 * pa (prod app)
