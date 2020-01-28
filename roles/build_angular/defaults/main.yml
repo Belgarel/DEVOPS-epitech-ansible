@@ -1,2 +1,3 @@
 angular_build_dir: ~/
 angular_build_ng_path: /bin
+angular_build_node_exec: /bin

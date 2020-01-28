@@ -1,3 +1,13 @@
+- name: role_yarn > ensure that apt-transport-https is installed (for debian)
+  apt:
+    name: apt-transport-https
+    state: present
+  become: true
+  become_method: 'su'
+  tags:
+    - yarn
+    - install
+
 - name: role_yarn > configure the yarn apt key
   apt_key:
     url: "{{ yarn_apt_url }}"

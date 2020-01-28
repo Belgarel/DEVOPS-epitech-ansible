@@ -1,0 +1,29 @@
+- name: role_yarn > configure the php apt key
+  apt_key:
+    url: "{{ php_key_url }}"
+  become: true
+  become_method: 'su'
+  tags:
+    - php
+    - install
+
+- name: role_yarn > add php repository
+  apt_repository:
+    repo: "{{ php_rep_url }}"
+    state: present
+  become: true
+  become_method: 'su'
+  tags:
+    - php
+    - install
+
+- name: role_yarn > ensure that php is installed
+  apt:
+    name: "{{ php_packages }}"
+    state: present
+    update_cache: yes
+  become: true
+  become_method: 'su'
+  tags:
+    - php
+    - install

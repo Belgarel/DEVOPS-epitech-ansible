@@ -1,6 +1,10 @@
 - name: role_deploy > Run yarn install
   yarn:
     path: "{{ deploy_build_dir }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ deploy_build_node_exec }}"
+  become: no
   tags:
   - setup
   - install
+

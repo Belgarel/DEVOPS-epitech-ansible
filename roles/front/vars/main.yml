@@ -6,6 +6,7 @@ front_build_dir: "{{ front_deploy_destination }}front/"
 
 node_node_version: 10.17.0
 front_node_executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_node_version }}/bin"
+node_node_executable: "{{ front_node_executable }}"
 
 angular_angular_npm_path: "{{ front_node_executable }}"
 
@@ -13,9 +14,11 @@ deploy_deploy_user: "{{ front_deploy_user }}"
 deploy_deploy_source: "{{ front_deploy_source }}"
 deploy_deploy_destination: "{{ front_deploy_destination }}"
 deploy_build_dir: "{{ front_build_dir }}"
+deploy_build_node_exec: "{{ front_node_executable }}"
 
 angular_build_dir: "{{ front_build_dir }}"
 angular_build_ng_path: "{{ front_node_executable }}"
+angular_build_node_exec: "{{ front_node_executable }}"
 
 service__user: "{{ front_deploy_user }}"
 service__name: "angular"

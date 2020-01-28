@@ -2,6 +2,9 @@
   command: yarn upgrade
   args:
     chdir: "{{ angular_build_dir }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ angular_build_node_exec }}"
+
   tags:
   - setup
   - install

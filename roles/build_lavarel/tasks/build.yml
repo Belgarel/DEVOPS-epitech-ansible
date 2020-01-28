@@ -2,6 +2,8 @@
   shell: yarn upgrade
   args:
     chdir: "{{ lavarel_build_dir }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ lavarel_build_node_exec }}"
   tags:
     - build
 
@@ -9,5 +11,7 @@
   composer:
     command: install
     working_dir: "{{ lavarel_build_dir }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ lavarel_build_node_exec }}"
   tags:
     - build

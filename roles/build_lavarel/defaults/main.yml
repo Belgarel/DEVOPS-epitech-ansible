@@ -1,4 +1,5 @@
 lavarel_build_dir: ~/
+lavarel_build_node_exec: /bin
 lavarel_configure_env_src: "{{ role_path }}/.env"
 lavarel_configure_env: ~/
 lavarel_configure_db_host: localhost

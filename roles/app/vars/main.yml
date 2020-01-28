@@ -6,6 +6,7 @@ app_build_dir: "{{ app_deploy_destination }}back/"
 
 node_node_version: 10.17.0
 app_node_executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_node_version }}/bin"
+node_executable_path: "{{ app_node_executable }}"
 
 angular_angular_npm_path: "{{ app_node_executable }}"
 
@@ -13,8 +14,10 @@ deploy_deploy_user: "{{ app_deploy_user }}"
 deploy_deploy_source: "{{ app_deploy_source }}"
 deploy_deploy_destination: "{{ app_deploy_destination }}"
 deploy_build_dir: "{{ app_build_dir }}"
+deploy_build_node_exec: "{{ app_node_executable }}"
 
 lavarel_build_dir: "{{ app_build_dir }}"
+lavarel_build_node_exec: "{{ app_node_executable }}"
 lavarel_configure_env: "{{ lavarel_build_dir }}.env"
 lavarel_configure_env_src: "{{ lavarel_configure_env }}.example"
 lavarel_configure_db_host: "{{ app_configure_db_host }}"
